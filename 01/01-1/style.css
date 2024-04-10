@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-size: 10rem;
+}
+
+
+.parent {
+    background-color: #23424A;
+    padding: 50px;
+    margin: 0 auto;
+}
+
+.child {
+    background-color: #38CFD9;
+/*    높이를 사용하지 않아도 자동로 맞춰준다
+    height: 250px; */
+}
