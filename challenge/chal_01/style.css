@@ -13,7 +13,18 @@ body {
     background-color: #23424A;
     color: white;
     width: 80%;
+    max-width: 750px;
     margin: 0 auto;
-    padding: 5rem;
+    padding: 3em;
+    /* padding: 3rem; */
 
 }
+
+.intro-content {
+    width: 30%;
+}
+
+/* 일반적으로는 height를 설정하지 않는다. minimum-width도 마찬가지이다. 기본적인 반응형 속성에 맞서는 일이기 떄문이다.
+따라서 특별한 상황이 아닌 한 width와 max-width만 설정한다.
+
+*/
