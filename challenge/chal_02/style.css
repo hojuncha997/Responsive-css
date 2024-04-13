@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    background-color: #23424A;
+    color: white;
+    /* width: 100%; */
+    /* max-width: 750px; */
+    margin: 0 auto;
+    padding: 3em;
+    /* padding: 3rem; */
+
+}
+
+.intro-content {
+    max-width: 50rem;
+    margin: 0 auto;
+    
+}
+
+.bottom-content {
+    margin: 0 auto;
+    max-width: 50rem;
+    padding: 3em;
+}
+
+/* 일반적으로는 height를 설정하지 않는다. minimum-width도 마찬가지이다. 기본적인 반응형 속성에 맞서는 일이기 떄문이다.
+따라서 특별한 상황이 아닌 한 width와 max-width만 설정한다.
+
+*/
