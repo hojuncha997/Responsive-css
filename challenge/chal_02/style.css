@@ -1,38 +1,57 @@
-* {
+/* 
+
+1. 기존 container클래스에서 배경색, 폰트색, 패딩 스타일링을 제거했다.
+    따라서 컨테이너는 너비, 최대너비, 마진 값만 남게되었다.
+2. container 클래스를 아래 태그들에도 적용해 주었다.
+    따라서 위 아래 모두 동일한 너비, 최대너비, 마진값을 가지게 되었다.
+
+3. 위 태그를 div로 감싸주고 거기에 intro라는 클래스명을 부여했다.
+    intro 클래스에 배경색, 폰트색, 패딩(상하)를 부여했다. 좌우는 0으로 설정.
+
+
+==>
+
+container의 width를 퍼센트로 설정하고, 
+max-width를 px로 설정하고, 
+margin을 0 auto로 설정하는 것은 흔한 패턴이다.
+
+이는 뷰포트를 기준으로 비율로서 너비를 설정하고,
+그 너비가 지정한 최대 폭을 넘지 않도록 하며,
+그러한 값들이 가운데 정렬되도록 하기 위해서이다.
+
+
+
+
+ */
+
+ * {
     box-sizing: border-box;
-}
-
-
-
-body {
+  }
+  
+  body {
     margin: 0;
     font-family: sans-serif;
-}
-
-.container {
-    background-color: #23424A;
-    color: white;
+  }
+  
+  .container {
     /* width: 100%; */
-    /* max-width: 750px; */
+    width: 80%;
+    max-width: 750px;
     margin: 0 auto;
-    padding: 3em;
-    /* padding: 3rem; */
+    /* background: #23424a;
+    color: white;
+    padding: 50px 0; */
+  }
 
-}
-
-.intro-content {
-    max-width: 50rem;
-    margin: 0 auto;
-    
-}
-
-.bottom-content {
-    margin: 0 auto;
-    max-width: 50rem;
-    padding: 3em;
-}
-
-/* 일반적으로는 height를 설정하지 않는다. minimum-width도 마찬가지이다. 기본적인 반응형 속성에 맞서는 일이기 떄문이다.
-따라서 특별한 상황이 아닌 한 width와 max-width만 설정한다.
-
-*/
+  .intro {
+    /* 인트로라는 div 클래스로 감싸서 스타일링하기 */
+    background-color: #23424a;
+    color: white;
+    /* padding: 50px; 이렇게 하면 상하좌우 모두. 따라서 아래처럼 상하만 주자*/
+    padding: 50px 0;
+  }
+  
+  .intro-content {
+    width: 50%;
+  }
+  
