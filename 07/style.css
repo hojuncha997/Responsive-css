@@ -1,0 +1,139 @@
+/* 
+  1.box-sizing 설정해줬음
+  2. body에 있는 기본 마진 0으로 처리
+  3. hero 클래스 설정
+  4. .container 설정
+  5. .hero__txt 설정
+  6. 구글 폰트 html에 넣기(css전에)
+  7. 폰트를 body에 적용하기(사이트 전체에서 사용할 수 있도록
+  8. body에 폰트사이즈 적용하기(rem)
+  9. h1 폰트 적용(rem)
+  10. .btn(a태그) 스타일링. 
+  - display: inline-block;설정
+  - padding은 em으로 설정. 해당 태그의 폰트 사이즈에 비례해서 커지고 작아지게 하기 위해.
+  - 이 a태그와 위 <p>태그 사이에 여백이 있지만 .margin-top은 주지 않음. 분명히 미래에 뭔가 더 추가될 거기 떄문에
+  - 따라서 <P>에 margin-bottom을 em으로 줌. hero__text처럼 클래스를 만들어 줘도 되지만 여기서는 그냥 p태그로 했음
+  - em은 항상 해당 클래스의 폰트를 기준으로 크기를 산정하는데, 여기서는 해당 태그에 설정된 것이 없고 body에 설정된 font-size값을 기준으로 함.
+
+  11. 버튼에 마우스를 올렸을 때의 효과를 줌
+    - .btn:hober, .btn:focue {}
+
+  12. .hero 아래에 h1과 p로 문단을 만든 후 그걸 col과 row div로 감싼다. 그리고 그걸 다시 .conatiner로 감싸서 너비와 위치를 감싸준다.
+  13. .row를 스타일링 해준다. display: flex해주면 block 속성인.col div가 올라와서 한 줄이 된다. (flex-direction:row가 기본이기 때문이다)
+  14. .col을 스타일링 해준다. 내용물이 적어도 쪼그라들지 않도록 width : 100%으로 설정한다.
+
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  /* font-size: 21px; rem으로 써주는 데 익숙해지자 */
+  font-size: 1.3125rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+.container {
+  /* border: 2px solid yellow; */
+  width: 80%;
+  /* max-width값을 주지 않으면 div가 계속 커져서 마치 가운데 정렬하지 않은 것처럼 보이게 된다.
+  텍스트는 그대로이고 왼쪽 정렬인데 박스는 계속 커지니까 그렇게 느껴지는 것이다 */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex; /* 이렇게 해주면 이 아이템이 flex container가 된다. 이 효과는 자식까지만 적용된다. 손자부터는 적용되지 않는다*/
+  flex-direction: row;
+}
+
+.col {
+  /* 부모인 .row가 flex container이므로 이게 flex items가 된다. 기본적으로는 최대한 줄어드려는 성질을 가진다. 
+  가지고 있는 <p>가 길기 때문에, 즉 3개의 총 길이가 화면80%보다 길기 때문에 100퍼센트가 되려고 한다.
+  그런데 만약 p의 내용이 짧아진다면, 하나만 쪼그라 들 것이다. 그게 싫다면 .col의 width를 기본적으로 100%로 설정하면 된다.
+  */
+  /* background: limegreen; */
+  margin: 10px;
+  /* 모든 col이 100퍼센트가 되려고 함 */
+  width: 100%;
+}
+
+.hero {
+  /* padding: 100px; 이렇게 줘버리면 작은 화면에서의 크게 느껴진다.
+  따라서 패딩을 아래처럼 준다. 그러면 양 옆으로 딱 붙어버려서 이상하지만, .container 또는 wrapper 클래스로
+  .hero 내부의 태그들을 감싼 뒤 해당 클래스에 스타일링(width, margin, max-width)을 해주면 된다.. */
+  padding: 100px 0;
+  background-color: #23424a;
+  color: #fff;
+}
+
+/* 부모, 즉 .container 너비의 50퍼센트 너비만큼만 사용함. body의 너비를 기준으로 할 때  body * 80% * 50%   
+    그런데 이런 식으로 하게 되면 나중에 내용이 추가되었을 때 힘들어질 수 있다. (옆에 그림의 들어온다든지)
+    따라서 hero__text라는 클래스로 h1과 p를 감싸주자. 이름에 __을 붙인 것은 BEM의 명명법을 따른 것으로서,
+    이 컴포넌트가 hero 컴포넌트의 서브 컴포넌트라는 의미이다.
+  */
+/* .hero p {
+ 
+  width: 50%;
+} */
+
+.hero__text {
+  width: 50%;
+  /* border: 1px solid pink; */
+}
+
+.hero p {
+  margin-bottom: 3em;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #38cfd9;
+  padding: 0.75em 2em;
+  border-radius: 100px;
+
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #23424a;
+  font-weight: 900;
+}
+
+.btn:hover,
+.btn:focus {
+  opacity: 0.75;
+}
+
+/* 
+
+CSS에서 display: inline-block; 속성을 사용하는 이유에 대해 설명.
+ display: inline-block; 속성은 요소를 인라인(inline) 레벨에서 블록(block) 레벨의 속성을 갖도록 한다.
+  즉, 이 속성을 사용하면 요소는 텍스트와 같은 인라인 요소처럼 다른 요소와 같은 줄에 배치되면서도, 블록 요소처럼 너비와 높이를 지정할 수 있다.
+
+이를 통해 다음과 같은 이점:
+
+배치 유연성: 
+요소를 한 줄에 나란히 배치하면서 각 요소의 크기를 조절할 수 있다. 이는 버튼, 메뉴 항목, 아이콘 등을 일렬로 배치할 때 유용하다.
+
+크기 조절: 
+블록 요소와 달리 display: inline-block; 속성을 가진 요소는 다른 인라인 요소들과 같은 라인에 있을 수 있으면서도,
+width와 height를 사용하여 요소의 크기를 조정할 수 있다.
+
+상하 여백 조절:
+margin과 padding을 통해 요소의 상하 여백을 조절할 수 있습니다. 이는 인라인 요소에서는 불가능한 조절이다.
+
+예를 들어, 주어진 CSS 코드에서 .btn 클래스를 사용한 요소는 <a>태그로,
+기본적으로 <a> 태그는 display: inline;으로 설정되어 있어서 다른 인라인 요소들과 같은 줄에 표시되지만, 
+블록 레벨의 스타일 속성(예: 너비, 높이, 패딩)을 적용할 수 "없"다. 
+
+display: inline-block; 속성 덕분에 텍스트와 같은 줄에 배치되면서도 배경색, 패딩, 테두리 반경 등 블록 요소의 특성을 적용할 수 있다.
+또한, :hover와 :focus 상태에서의 효과를 통해 사용자 인터랙션을 시각적으로 표현할 수 있다.
+
+*/
