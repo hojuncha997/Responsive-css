@@ -21,6 +21,7 @@
   12. .hero 아래에 h1과 p로 문단을 만든 후 그걸 col과 row div로 감싼다. 그리고 그걸 다시 .conatiner로 감싸서 너비와 위치를 감싸준다.
   13. .row를 스타일링 해준다. display: flex해주면 block 속성인.col div가 올라와서 한 줄이 된다. (flex-direction:row가 기본이기 때문이다)
   14. .col을 스타일링 해준다. 내용물이 적어도 쪼그라들지 않도록 width : 100%으로 설정한다.
+  15. .row에 gap: 100px을 줘서 .col사이의 간격을 벌린다. 혹은 .col + .col도 사용 가능.
 
 */
 
@@ -53,6 +54,7 @@ h1 {
 .row {
   display: flex; /* 이렇게 해주면 이 아이템이 flex container가 된다. 이 효과는 자식까지만 적용된다. 손자부터는 적용되지 않는다*/
   flex-direction: row;
+   gap: 100px; /* 이렇게 말고 .col + .col {margin-left:100px;}을 쓸 수도 있다.*/
 }
 
 .col {
@@ -61,10 +63,11 @@ h1 {
   그런데 만약 p의 내용이 짧아진다면, 하나만 쪼그라 들 것이다. 그게 싫다면 .col의 width를 기본적으로 100%로 설정하면 된다.
   */
   /* background: limegreen; */
-  margin: 10px;
+  /* margin: 10px; */
   /* 모든 col이 100퍼센트가 되려고 함 */
   width: 100%;
 }
+
 
 .hero {
   /* padding: 100px; 이렇게 줘버리면 작은 화면에서의 크게 느껴진다.
