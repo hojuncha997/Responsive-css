@@ -26,7 +26,15 @@
   17. 이제 위의 헤딩을 바꾸고 싶다면 section 태그를 만들어서 .container를 감싸준다.
     - 칼럼 3개인 곳은 three-col이고 2개인 곳은 two-col이다.
     - 패딩을 넣어 간격을 벌리고 중앙정렬한 뒤 텍스트 색을 바꿔줬다.
-*/
+
+  18. <div class="container"><div class="row"></div></div> ==> <div class="container row"> 유틸리티 클래스처럼 변경 
+      여기서 row를 d-flex로 명하기도 한다. display:flex의 약자이다.
+
+  19. 이미지를 추가하는 데는 세 가지 방법이 있다.
+    - 간단히 <img> 태그를 직접 사용하는 것이다. 이 경우 .row에 align-items:flex-start를 줘서 이미지가 옆의 텍스트의 높이와 맞춰지지 않게 한다.
+    - 두 번쨰는 img 태그를 div로 감싸는 것이다. 이 경우 img를 감싸고 있는 div는 글씨의 높이를 기준으로 늘어나지만 그 내부의 이미지는 늘어나있지 않는다.
+    - 세 번째는 해당 이미지에 클래스명을 부여해서 alitn-self: flex-start로 설정하는 것이다. self임에 주의하자. 이는 html를 깔끔하게 유지할 수 있게 한다.
+  */
 
 *,
 *::before,
@@ -54,9 +62,11 @@ h1 {
   margin: 0 auto;
 }
 
-.row {
+.row{
   display: flex; /* 이렇게 해주면 이 아이템이 flex container가 된다. 이 효과는 자식까지만 적용된다. 손자부터는 적용되지 않는다*/
-  flex-direction: row;
+  /* flex-direction: row; */
+  /* align-items: flex-start; */
+  /* 얼라인 아이템을 스타트로 주지 않으면 이미지가 옆의 텍스트와 똑같은 높이가 돼 버린다. 하기 싫으면 div로 이미지를 감싸라*/
    /* gap: 100px; 이렇게 말고 .col + .col {margin-left:100px;}을 쓸 수도 있다. */
 }
 
@@ -94,8 +104,13 @@ h1 {
 } */
 
 .hero__text {
-  width: 50%;
+  width: 60%;
+  background-color: brown;
   /* border: 1px solid pink; */
+}
+
+.hero__img {
+  align-self: flex-start;
 }
 
 .hero p {
