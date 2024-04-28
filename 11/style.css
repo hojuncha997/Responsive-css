@@ -56,6 +56,15 @@
             <section class="primary-content"></section>
             <aside class="sidebar"></aside>
         </main>
+
+
+  23.section과 aside에 내용을 넣어주고 main 클래스에 container와 row를 붙여줘서 너비를 정해주고 플렉스박스로 만든다.
+    또한 비율을 .primay-content와 .sidebar 클래스를 만들어서 width를 퍼센트로 정해준다. 그런데 이게 hero__text, hero__img와 같으므로
+    그냥 hero__text, hero__img에 추가해줘도 된다. 그러나 이러면 독립적인 스타일링이 불가하므로 따로 작성한다.
+
+    폰트, 정렬, 배경색을 주고, 패딩을 준다. 
+
+  24. main클래스를 만들어 margin-top: 3em을 주어 위와 떼어준다. section-title클래스를 만들어 스타일링을 한다.
        
 
 
@@ -84,6 +93,28 @@ img {
 h1 {
   font-size: 3rem;
   margin: 0 auto;
+}
+
+.section-title {
+  color: #87629a;
+}
+
+
+.btn {
+  display: inline-block;
+  background-color: #38cfd9;
+  padding: 0.75em 2em;
+  border-radius: 100px;
+
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #23424a;
+  font-weight: 900;
+}
+
+.btn:hover,
+.btn:focus {
+  opacity: 0.75;
 }
 
 .container {
@@ -142,14 +173,14 @@ h1 {
 } */
 
 .hero__text {
-  width: 55%;
-  background-color: brown;
+  width: 62%;
+  /* background-color: brown; */
   /* margin-right: 10%; */
   /* 텍스트 옆에 퍼센트 마진을 줘서 이미지를 끝으로 밀어냄. 이 방법보다는 justify-contents를 사용하는 게 좋음*/
 }
 
 .hero__img {
-  width: 30%;
+  width: 32%;
   align-self: flex-start;
 }
 
@@ -157,39 +188,23 @@ h1 {
   margin-bottom: 3em 0;
 }
 
-.three-col {
-  text-align: center;
-  padding: 3em 0;
-}
-.three-col h2{
-  /* background-color: green; */
-  color: #87629a;
+.main {
+  margin-top: 3em;
 }
 
+.primary-content {
+  /* sidebar에 width를 주지 않으면 이게 더 줄어들 수 있다. 놀라지 말고 sidebar 클래스를 작성해서 width를 작성하자. 그럼 맞춰진다. */
+  width: 62%;
+}
 
-.two-col {
+.sidebar {
+  width: 32%;
+  padding: 1em;
   text-align: center;
-  padding: 3em 0;
+  color: #fff;
   background-color: #136c72;
-  color: white;
 }
 
-.btn {
-  display: inline-block;
-  background-color: #38cfd9;
-  padding: 0.75em 2em;
-  border-radius: 100px;
-
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #23424a;
-  font-weight: 900;
-}
-
-.btn:hover,
-.btn:focus {
-  opacity: 0.75;
-}
 
 /* 
 
