@@ -65,6 +65,62 @@
     폰트, 정렬, 배경색을 주고, 패딩을 준다. 
 
   24. main클래스를 만들어 margin-top: 3em을 주어 위와 떼어준다. section-title클래스를 만들어 스타일링을 한다.
+
+  25. 페이지 최상단에 네비게이션을 만들어주기 위해 <header>를 수정해준다. header에서 클래스를 제거하고 section을 만들어준 뒤 클래스를 부여하고 기존 내용을 감쌌다.
+      그 위에는 nav태그를 추가해 주었다.
+
+      <header class="hero">
+      <div class="container row">
+        <div class="hero__text">
+          <h1>Responsive layouts don’t have to be a struggle</h1>
+
+    ==>
+
+        <header>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Contact</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Sign In</a></li>
+          <li class="nav__item">
+            <a href="#" class="nav__link nav__link--button">Sign up</a>
+          </li>
+        </ul>
+      </nav>
+      <section class="hero">
+        <div class="container row">
+          <div class="hero__text">
+            <h1>Responsive layouts don’t have to be a struggle</h1>
+
+      그리고 nav를 위한 스타일링을 추가해준다 header, nav__item, nav__link 등등
+
+      마지막엔 이 HTML에서 <nav>를 <container>로 감싸서  기존 내용들과 위치, 폭을 맞춰줬다.
+
+  26. 기존 네비게이션은 container 클래스 내부에서 왼쪽 정렬 돼 있었다. 여기서부터는 좌측에 로고도 추가하고, 버튼의 위치를 종류에 맞춰
+      중간, 오른쪽으로 변경한다. 먼저 오른쪽으로 붙일 요소를 변경한다.
+      
+       <li class="nav__item nav__item--push-right"><a href="#" class="nav__link">Sign In</a></li> //여기만 해도 뒤에 있는 것들이 다 밀린다.
+        <li class="nav__item"><a href="#" class="nav__link nav__link--button">Sign up</a></li>
+      그 다음에 이 클래스를 margin-left: auto하면 오른쪽 정렬된다.
+
+      그러나 실제에서 이 방법은 잘 쓰이지 않는다. 그 보다는 해당 두 버튼을 리스트에서 제거한 뒤 개별 <ul>에 구성한 뒤 스타일링 하는 게 일반적이다.
+      후자의 방법으로 한 뒤, nav 클래스에 display:flex와 justify-content: space-between을 준다. 그러면 nav가 감싸고 있는 두 개의 ul이 양쪽으로 정렬된다.
+
+      오른쪽 정렬된 마지막 원소의 끝에 마진이 남는 문제가 있다. 이는 아래 설정 때문에 그렇다.
+
+      .nav__item {
+         margin-right: 1em;
+      }
+
+      이걸 아래처럼 변경해 줘서 해결한다
+
+      .nav__item + .nav__item {
+         margin-left: 1em;
+      }
+
+      이렇게 하면 왼쪽에 똑같은 .nav__item이 있는 요소만 선택된다. 즉, 좌측에 형제가 없는 요소는 선택되지 않는다. 그리고 좌측 마진을 준다.
+      물론 이렇게 하지 않아도 된다. 개별 요소마다 클래스 명을 부여해서 조절해 줘도 문제 없다.
        
 
 
@@ -85,6 +141,7 @@ body {
   /* font-size: 21px; rem으로 써주는 데 익숙해지자 */
   font-size: 1.3125rem;
 }
+
 
 img {
   max-width: 100%;
@@ -124,6 +181,7 @@ h1 {
   텍스트는 그대로이고 왼쪽 정렬인데 박스는 계속 커지니까 그렇게 느껴지는 것이다 */
   max-width: 1100px;
   margin: 0 auto;
+  /* 만약 margin-left:auto 한다면 페이지가 오른쪽 정렬된다. 왼쪽에만 마진이 적용되기 때문이다. margin-right의 경우는 왼쪽정렬된다. */
 }
 
 .row{
@@ -148,9 +206,60 @@ h1 {
 
 .col + .col {margin-left:30px;}
 
-.container {
+/* .container {
   border: 3px solid green;
+} */
+
+/* nav추가후 스타일링 */
+
+header {
+  background-color: #136c72;
+  padding: 1em 0;
 }
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  
+}
+
+/* .nav__item {
+  margin-right: 1em;
+} */
+
+.nav__item + .nav__item {
+  margin-left: 1em;
+}
+
+.nav__item--push-right {
+  /* 마진이 왼쪽에만 적용되어서 해당 클래스를 사용하는 것들이 오른쪽 정렬됨 */
+  margin-left: auto;
+}
+
+.nav__link {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav__link--button {
+  background-color: #fff;
+  color: #136c72;
+  padding: .25em 1em;
+  border-radius: 10em;
+}
+
+.nav__link:hover {
+  opacity: .75;
+}
+
 
 
 .hero {
