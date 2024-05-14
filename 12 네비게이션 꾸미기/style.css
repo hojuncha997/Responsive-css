@@ -122,7 +122,7 @@
       이렇게 하면 왼쪽에 똑같은 .nav__item이 있는 요소만 선택된다. 즉, 좌측에 형제가 없는 요소는 선택되지 않는다. 그리고 좌측 마진을 준다.
       물론 이렇게 하지 않아도 된다. 개별 요소마다 클래스 명을 부여해서 조절해 줘도 문제 없다.
        
-
+    27. container 아래에 a태그를 넣고 그 아래에 img태그를 넣어준다
 
 
 
@@ -184,13 +184,14 @@ h1 {
   /* 만약 margin-left:auto 한다면 페이지가 오른쪽 정렬된다. 왼쪽에만 마진이 적용되기 때문이다. margin-right의 경우는 왼쪽정렬된다. */
 }
 
-.row{
-  display: flex; /* 이렇게 해주면 이 아이템이 flex container가 된다. 이 효과는 자식까지만 적용된다. 손자부터는 적용되지 않는다*/
+.row {
+  display: flex;
+  /* 이렇게 해주면 이 아이템이 flex container가 된다. 이 효과는 자식까지만 적용된다. 손자부터는 적용되지 않는다*/
   /* flex-direction: row; */
   /* align-items: flex-start; */
   /* 얼라인 아이템을 스타트로 주지 않으면 이미지가 옆의 텍스트와 똑같은 높이가 돼 버린다. 하기 싫으면 div로 이미지를 감싸라*/
-   /* gap: 100px; 이렇게 말고 .col + .col {margin-left:100px;}을 쓸 수도 있다. */
-   justify-content: space-between;
+  /* gap: 100px; 이렇게 말고 .col + .col {margin-left:100px;}을 쓸 수도 있다. */
+  justify-content: space-between;
 }
 
 .col {
@@ -204,7 +205,9 @@ h1 {
   width: 100%;
 }
 
-.col + .col {margin-left:30px;}
+.col+.col {
+  margin-left: 30px;
+}
 
 /* .container {
   border: 3px solid green;
@@ -217,9 +220,15 @@ header {
   padding: 1em 0;
 }
 
+/* .logo {
+  margin-right: 1em;
+} */
+
 .nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
 }
 
 .nav__list {
@@ -227,14 +236,14 @@ header {
   padding: 0;
   list-style: none;
   display: flex;
-  
+
 }
 
 /* .nav__item {
   margin-right: 1em;
 } */
 
-.nav__item + .nav__item {
+.nav__item+.nav__item {
   margin-left: 1em;
 }
 
