@@ -128,6 +128,40 @@
           margin: 0 auto;
         }
 
+    30. 랜딩페이지 미디어쿼리 사용하여 반응형 작업
+        @media (max-width: 600px) {
+          .row {
+            display: block;
+          }
+          .hero__text,
+          .hero__img,
+          .primary-content,
+          .sidebar {
+            width: 100%;
+          }
+
+          .hero__img {
+            margin-top: 2em;
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -339,6 +373,24 @@ header {
   background-color: #136c72;
 }
 
+/* 랜딩페이지 반응형 작업 */
+@media (max-width: 600px) {
+  .row {
+    display: block;
+  }
+
+
+  .hero__text,
+  .hero__img,
+  .primary-content,
+  .sidebar {
+    width: 100%;
+  }
+
+  .hero__img {
+    margin-top: 2em;
+  }
+}
 
 /* 
 
