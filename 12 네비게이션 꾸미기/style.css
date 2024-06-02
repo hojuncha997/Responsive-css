@@ -123,6 +123,10 @@
       물론 이렇게 하지 않아도 된다. 개별 요소마다 클래스 명을 부여해서 조절해 줘도 문제 없다.
        
     27. container 아래에 a태그를 넣고 그 아래에 img태그를 넣어준다
+    28. nav에 flex-grow와 설정을 넣어줌 (flex-shrink도 알아볼 것)
+    29. .nav__list--primary {
+          margin: 0 auto;
+        }
 
 
 
@@ -220,14 +224,19 @@ header {
   padding: 1em 0;
 }
 
-/* .logo {
+.logo {
   margin-right: 1em;
-} */
+  /* border: 2px solid yellow; */
+}
 
 .nav {
   display: flex;
   justify-content: space-between;
+  flex-grow: 1;
+  /* flex-shrink: 1; */
   align-items: center;
+
+  /*flex-grow는 커짐. shrink :1은 작아지는 것을 허용 */
 
 }
 
@@ -236,7 +245,14 @@ header {
   padding: 0;
   list-style: none;
   display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  /* border: 2px solid red; */
 
+}
+
+.nav__list--primary {
+  margin: 0 auto;
 }
 
 /* .nav__item {
